@@ -2,8 +2,8 @@ library(shiny)
 shinyUI(pageWithSidebar(
   headerPanel("Can You take your dream vacation?"),
   sidebarPanel(
-    h1('Your Budget Reality'),
-    h5('Enter your vacation costs and your budget information below to find out if you can afford your dream vacation without breaking the bank.'),
+    h1('Input: Your Budget Reality'),
+    h5('Enter your vacation information and your budget information below to find out if you can afford your dream vacation without breaking the bank.'),
     numericInput("Vacay_Cost", "Cost of Vacation:", 3000, min = 0, max = 1000000, step = 100),
     numericInput("Weeks_to_Go", "Weeks Until Trip:", 10, min = 0, max = 500, step = 1),
     numericInput("Cash", "Cash in the bank:", 1000, min = 0, max = 1000000, step = 100),
@@ -19,7 +19,8 @@ shinyUI(pageWithSidebar(
     h5('(How much you normally spend in a week)')
       ),
   mainPanel(
-    h1('Weekly budget to afford your dream vacation'),
+    h1('Output: Weekly budgets to afford your dream vacation'),
+    h5('Below are calculations to determine the maximum amount you can budget for personal spending each week and still afford your dream vacation.'),
     h4(),
     h3('Summary'),
     verbatimTextOutput("Summary_Out"),
