@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vacation Savings Calculator</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Vacation Savings Calculator">
+  <meta name="author" content="Matthew Fergusson">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Vacation Savings Calculator</h1>
+    <h2>How and why to use the Vacation Savings Calculator app</h2>
+    <p>Matthew Fergusson<br/>Assignment for Developing Data Products class through Johns Hopkins</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Why use the Vacation Savings Calculator</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>Have you ever thought about a trip you saw in a magazine, but wondered whether or not you could ever really afford it?</h4>
+
+<h5>If you have then this is your opporunity to see what it would take to make that dream a reality.</h5>
+
+<h4>All you have to do is:</h4>
+
+<ol>
+<li>Decide when you want to take the vacation</li>
+<li>Estimate how much the vacation will cost</li>
+<li>Know a little bit about your own financial and credit situation</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Step 1: Entering Your Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>For an example lets start off with some sample Inputs.</h4>
+
+<h5>Below are sample inputs that reflect the actual entry fields of the app</h5>
+
+<pre><code class="r">Vacation_Cost &lt;- 3000  #Cost of Vacation
+Weeks_till_Trip &lt;- 25  #Weeks Until the Planned Trip
+Cash_in_Bank &lt;- 500    #Cash in the bank that can be used for the trip
+Total_Credit &lt;- 5000   #Total Credit from All Credit Lines
+Credit_Used &lt;- 250     #Total Credit Used from All Credit Lines
+Pct_Credit_Used &lt;- 25  #The % of your total credit that you are willing to use for vacation
+Weekly_Earnings &lt;- 500 #Weekly takehome pay after pre-tax deductions
+Monthly_Rent &lt;- 1000   #Monthly rent or mortgage payment
+Other_Exp &lt;- 500       #Other Monthly Mandatory Expenses
+Pref_Budget &lt;- 250     #How much you normally spend in a week
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Step 2: What is being calculated</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>The app calculates your maximum weekly budget for normal spending under 3 scenarios to pay for vacation:</h4>
+
+<ol>
+<li>Maxing out your credit card </li>
+<li>Using only the amount of credit you are comfortable with</li>
+<li>not using any credit at all for the vacation</li>
+</ol>
+
+<pre><code class="r">#1)
+MaxOUT_Credit &lt;- ((Total_Credit - Credit_Used) + Cash_in_Bank + Weekly_Earnings * Weeks_till_Trip - (Monthly_Rent * (12/52) + Other_Exp * (12/52)) * Weeks_till_Trip) / Weeks_till_Trip - Vacation_Cost / Weeks_till_Trip
+#2)
+Comfortable_Credit &lt;- (max(Total_Credit * (Pct_Credit_Used/100) - Credit_Used,0) + Cash_in_Bank + Weekly_Earnings * Weeks_till_Trip -  (Monthly_Rent * (12/52) + Other_Exp * (12/52)) * Weeks_till_Trip)/Weeks_till_Trip - Vacation_Cost/Weeks_till_Trip
+#3)
+No_Credit &lt;- (Cash_in_Bank + Weekly_Earnings * Weeks_till_Trip - (Monthly_Rent * (12/52) + Other_Exp * (12/52)) * Weeks_till_Trip)/Weeks_till_Trip - Vacation_Cost/Weeks_till_Trip
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Step 3: Explaining the results</h2>
+  </hgroup>
+  <article data-timings="">
+    <h4>Here you can see what the output of the app will be given the previous inputs</h4>
+
+<ol>
+<li>Maxing out your credit card </li>
+</ol>
+
+<pre><code>## [1] 243.8462
+</code></pre>
+
+<ol>
+<li>Using only the amount of credit you are comfortable with</li>
+</ol>
+
+<pre><code>## [1] 93.84615
+</code></pre>
+
+<ol>
+<li>not using any credit at all for the vacation</li>
+</ol>
+
+<pre><code>## [1] 53.84615
+</code></pre>
+
+<h4>Summary:</h4>
+
+<pre><code>## [1] &quot;You can barely afford the vacation. You will have to cut back your weekly budget. The YOLO attitude is in vogue, but now you are starting to get reckless.&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Step 4: Flying, Driving, or Sailing Away to Your Dream Come True</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>With the information provided by this app you will be off to visit whatever place you may desire. That is asa long as it&#39;s in the budget</h3>
+
+<h3>Thank you for your attention, please let me know if you have any questions</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Why use the Vacation Savings Calculator'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Step 1: Entering Your Information'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Step 2: What is being calculated'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Step 3: Explaining the results'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Step 4: Flying, Driving, or Sailing Away to Your Dream Come True'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
