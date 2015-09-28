@@ -8,6 +8,8 @@ job         : Assignment for Developing Data Products class through Johns Hopkin
 ## Slidify did not work properly for publishing 
 
 #### Please download and view the html from "index.html" to see the Slidify presentation.
+#### Also published (but calculations not showing) using github GH Pages at: 
+#####"http://matthew-t-fergusson.github.io/Developing_Data_Products_Project/"
 
 #### Also see "index2.docx" if you have MS Word for a more easily viewed and formatted version
 
