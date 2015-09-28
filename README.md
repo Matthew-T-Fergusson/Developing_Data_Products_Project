@@ -5,7 +5,7 @@ author      : Matthew Fergusson
 job         : Assignment for Developing Data Products class through Johns Hopkins
 ---
 
-## Slidify did not work for publish properly
+## Slidify did not work properly for publishing 
 
 #### Please follow download and view the html from "index.html" to see the Slidify presentation.
 
