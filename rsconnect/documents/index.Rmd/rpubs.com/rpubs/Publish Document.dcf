@@ -1,0 +1,7 @@
+name: Publish Document
+account: rpubs
+server: rpubs.com
+bundleId:
+        https://api.rpubs.com/api/v1/document/114232/2c5d4954b01244f5a8cd04213ddec5bb
+url: http://rpubs.com/MFergusson/114232
+when: 1443399156.50466
