@@ -7,7 +7,7 @@ job         : Assignment for Developing Data Products class through Johns Hopkin
 
 ## Slidify did not work properly for publishing 
 
-#### Please follow download and view the html from "index.html" to see the Slidify presentation.
+#### Please download and view the html from "index.html" to see the Slidify presentation.
 
 #### Also see "index2.docx" if you have MS Word for a more easily viewed and formatted version
 
